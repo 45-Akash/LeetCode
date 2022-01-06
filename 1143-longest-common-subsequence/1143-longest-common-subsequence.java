@@ -2,14 +2,21 @@ class Solution {
     
     int LCS(String s1, String s2, int l1, int l2, int[][] dp)
     {
-        if(l1==0 || l2==0)    return 0;
-        
-        if(dp[l1][l2] != -1)   return dp[l1][l2];
-        if(s1.charAt(l1-1) == s2.charAt(l2-1)) 
+        for(int i=1; i<=l1; i++)
         {
-            return dp[l1][l2] = 1+LCS(s1,s2,l1-1,l2-1,dp);
+            for(int j=1; j<=l2; j++)
+            {
+                if(s1.charAt(i-1)==s2.charAt(j-1))
+                {
+                    dp[i][j] = 1+dp[i-1][j-1];
+                }
+                else
+                {
+                    dp[i][j] = Math.max(dp[i-1][j] , dp[i][j-1]);
+                }
+            }
         }
-        return dp[l1][l2] = Math.max(LCS(s1,s2,l1-1,l2,dp),LCS(s1,s2,l1,l2-1,dp));
+    return dp[l1][l2];
     }
     
     public int longestCommonSubsequence(String text1, String text2)
@@ -22,7 +29,7 @@ class Solution {
         {
             for(int j=0; j<=len_2; j++)
             {
-                dp[i][j] = -1;
+                if(i==0 || j==0)   dp[i][j]=0;
             }
         }
         int ans = LCS(text1, text2, len_1, len_2, dp);
