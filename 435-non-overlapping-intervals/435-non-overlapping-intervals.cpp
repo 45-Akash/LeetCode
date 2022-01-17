@@ -3,6 +3,7 @@ public:
     
     static bool sort2(vector<int>&o1, vector<int>&o2)
     {
+        //+++++++++++++ For sorting based on two fiels +++++++++++++= 
         // if(o1[0]==o2[0])
         // {
         //     return o1[1] < o2[1];
@@ -17,11 +18,10 @@ public:
         
         int cnt=0;
         int end = intervals[0][1];
-        int start = intervals[1][0];
         
         for(int i=1; i<intervals.size(); i++)
         {
-            start = intervals[i][0]; 
+            int start = intervals[i][0]; 
             if(end > start)           
             {
                 end = min(end,intervals[i][1]);
