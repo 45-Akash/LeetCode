@@ -4,11 +4,11 @@ public:
     {
         unordered_map<char,int>last;
         vector<int>ans;
-        
         int size = s.size();
+        
         for(int i=size-1; i>=0; i--)
         {
-            if(last[s[i]]==0)     last[s[i]] = i+1;
+            if(last[s[i]]==0)     last[s[i]] = i;
         }
         
         for(int i=0; i<size; i++)
@@ -16,7 +16,7 @@ public:
             char ch = s[i];
             int end = last[ch];
             int j;
-            for(j=i; j<end-1; j++)
+            for(j=i; j<end; j++)
             {
                 if(last[s[j]]>end)   end = last[s[j]];
             }
