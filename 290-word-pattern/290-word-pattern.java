@@ -15,8 +15,7 @@ class Solution {
             if(hmp.containsValue(ch) && hmp.get(str)!=ch)
                 return false;
             
-            hmp.put(arr[i], pattern.charAt(i));
-           
+            hmp.put(arr[i], pattern.charAt(i)); 
         }
     return true;
     }
