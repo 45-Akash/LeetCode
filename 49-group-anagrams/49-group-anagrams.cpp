@@ -5,13 +5,17 @@ public:
         vector<string>org;
         vector<vector<string>>res;
         unordered_map<string,vector<int>>mp;
+        
+        //copy original vector into new one
         for(auto it : strs)      org.push_back(it);
         
+        //sort all the string of vector
         for(int i=0; i<strs.size(); i++)
         {
             sort(strs[i].begin(), strs[i].end());
         }
         
+        //store the strings in map and their index
         for(int i=0; i<strs.size(); i++)
         {
             mp[strs[i]].push_back(i);
