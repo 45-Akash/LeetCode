@@ -5,7 +5,6 @@ public:
         vector<int>ans;
         int integer=1;
         set<int>st;
-       
         if(x==1 && y==1)
         {
             if(bound>=2)      ans.push_back(2);
@@ -17,7 +16,7 @@ public:
             for(int j=0; pow(y,j)<=bound; j++)
             {
                 int val = 1+pow(y,j);
-                if(st.find(val)==st.end()) 
+                if(val<=bound && st.find(val)==st.end()) 
                 {
                     ans.push_back(val);
                     st.insert(val);
@@ -31,7 +30,7 @@ public:
                 if(y==1)
                 {
                     int val = 1+pow(x,i);
-                    if(st.find(val)==st.end()) 
+                    if(val<=bound && st.find(val)==st.end()) 
                     {
                         ans.push_back(val);
                         st.insert(val);
@@ -42,7 +41,7 @@ public:
                     for(int j=0; pow(y,j)<=bound; j++)
                     {
                         int val = pow(y,j)+pow(x,i);
-                        if(st.find(val)==st.end()) 
+                        if(val<=bound && st.find(val)==st.end()) 
                         {
                             ans.push_back(val);
                             st.insert(val);
@@ -52,11 +51,7 @@ public:
 
             }
         }
-        vector<int>ds;
-        for(auto it:ans)
-        {
-            if(it<=bound)   ds.push_back(it);
-        }
-    return ds;
+        
+    return ans;
     }
 };
