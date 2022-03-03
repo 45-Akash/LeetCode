@@ -13,7 +13,6 @@ public:
             {
                 nums[j++] = vec[i];
             }
-        }
-        
+        } 
     }
 };
