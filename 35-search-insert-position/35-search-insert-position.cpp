@@ -2,30 +2,33 @@ class Solution {
 public:
     int searchInsert(vector<int>& nums, int target)
     {
-       auto it = lower_bound(nums.begin(), nums.end(), target);
-       int index = it-nums.begin();
+        int s=0;
+        int e=nums.size()-1;
+        int pos;
         
-       if(it != nums.end())
-       {
-           return index;
-       }
-        else
+        while(s<=e)
         {
-            int pos=0;
-            int flag2=0;
-            for(auto it : nums)
+            int m = s + (e-s)/2;
+            
             {
-                if(target < it){
-                    flag2=1;
-                    return pos;
+                if(nums[m]==target)
+                {
+                    pos=m;
+                    break;
                 }
-                pos++;
-            }
-            if(flag2==0)
-            {
-                return nums.size();
+                else if(nums[m]>target)
+                {
+                    pos=m;
+                    e=m-1;   
+                }
+                else
+                {  
+                    s=m+1; 
+                    pos=s;
+                }
             }
         }
-        return 1;
+        
+    return pos;
     }
 };
