@@ -2,15 +2,20 @@ class Solution {
 public:
     int mySqrt(int x)
     {
-        if(x==0) return 0;
-        long long int num=0;
-        long long int sqr=0;
-        while(sqr < x)
+        int s=0,e=x;
+        int ans;
+        while(s<=e)
         {
-            num++;
-            sqr = num*num;
+            long long int m=s+(e-s)/2;
+            
+            if(m*m == x)     return m;
+            else if(m*m > x) e=m-1;
+            else             
+            {
+                ans=m;
+                s=m+1;
+            }
         }
-        if(sqr==x) return num;
-        return num-1;
+    return ans;
     }
 };
