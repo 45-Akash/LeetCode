@@ -13,6 +13,9 @@ public:
         {
             swap(nums[ind],nums[i]);
             solve(nums, ind+1, ans);
+            
+            //backtrack 
+            swap(nums[ind],nums[i]);
         }
     }
     vector<vector<int>> permute(vector<int>& nums)
