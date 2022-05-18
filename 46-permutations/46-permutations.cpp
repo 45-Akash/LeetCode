@@ -1,30 +1,27 @@
 class Solution {
 public:
-    vector<vector<int>> permute(vector<int>& nums)
+    
+    void solve(vector<int>nums, int ind, vector<vector<int>>&ans)
     {
-        int len = nums.size();
-        int size = 1;
-        
-        for(int i=1; i<=len; i++)     //factorial to find possible number of                                             permutations
+        if(ind>=nums.size())
         {
-            size *= i;
+            ans.push_back(nums);
+            return;
         }
         
-        sort(nums.begin(), nums.end());     //sort the original nums
+        for(int i=ind; i<nums.size(); i++)
+        {
+            swap(nums[ind],nums[i]);
+            solve(nums, ind+1, ans);
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums)
+    {
+        vector<vector<int>> ans;
+        vector<int>ds;
         
-        vector<vector<int>>vec(size,vector<int>());  //2D vector memory                                                                allocation
-        int j=0;
+        solve(nums, 0, ans);
         
-        do{                                   //using STL find all permutations
-            for(int i=0; i<nums.size(); i++)
-            {
-                vec[j].push_back(nums[i]);
-            
-            }
-            j++;
-        }while(next_permutation(nums.begin(), nums.end()));
-        
-        return vec;
-        
+        return ans;
     }
 };
