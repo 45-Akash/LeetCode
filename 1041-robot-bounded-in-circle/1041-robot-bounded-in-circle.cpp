@@ -9,7 +9,7 @@ public:
             char mov = instructions[i];
             if(d=='N')
             {
-                if(mov=='G')  y++;
+                if(mov=='G')  y++;          
                 if(mov=='L')  d='W';
                 if(mov=='R')  d='E';
             }
@@ -27,7 +27,7 @@ public:
             }
             else if(d=='S')
             {
-                if(mov=='G')  y--;
+                if(mov=='G')  y--;        
                 if(mov=='L')  d='E';
                 if(mov=='R')  d='W';
             }
