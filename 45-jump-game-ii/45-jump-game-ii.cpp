@@ -1,22 +1,22 @@
 class Solution {
 public:
-    int cost(vector<int>&nums, int ind, int n, vector<int>&dp)
-    {
-        if(ind>=n)     return INT_MAX-n;
-        if(ind==n-1)   return 0;
-        
-        if(dp[ind]!=INT_MAX-n)     return dp[ind];
-        if(nums[ind]==0)           return INT_MAX-n;
-        
-        for(int i=ind+1; i<=ind+nums[ind]; i++)
-            dp[ind] = min(dp[ind], 1+cost(nums, i, n, dp));
-        return dp[ind];
-    }
+
     int jump(vector<int>& nums)
     {
         int n = nums.size();
         vector<int>dp(n, INT_MAX-n);
+        dp[n-1] = 0;
         
-        return cost(nums, 0, n, dp);
+        for(int i=n-2; i>=0; i--)
+        {
+            int num = nums[i];
+            for(int j=i+1; j<=i+num; j++)
+            {
+                int fs = INT_MAX-n;
+                if(j<n) fs=1+dp[j];
+                dp[i] = min(dp[i], fs);
+            }
+        }
+    return dp[0];   
     }
 };
