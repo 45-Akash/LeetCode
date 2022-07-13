@@ -28,7 +28,7 @@ public:
                 TreeNode *temp = Q.front();
                 Q.pop();
                 
-                if(temp->left != NULL) Q.push(temp->left);
+                if(temp->left != NULL)  Q.push(temp->left);
                 if(temp->right != NULL) Q.push(temp->right);
                 
                 level.push_back(temp->val);
