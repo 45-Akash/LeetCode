@@ -28,7 +28,37 @@ public:
         int l1 = word1.size();
         int l2 = word2.size();
         
-        vector<vector<int>>dp(l1, vector<int>(l2, -1));
-        return Edist(word1, word2, l1-1, l2-1, dp);
+        vector<vector<int>>dp(l1+1, vector<int>(l2+1, 0));
+        for(int i=0; i<=l1; i++)
+        {
+            for(int j=0; j<=l2; j++)
+            {
+                dp[i][0] = i;
+                dp[0][j] = j;
+            }
+        }
+        
+        for(int i=1; i<=l1; i++)
+        {
+            for(int j=1; j<=l2; j++)
+            {
+                if(word1[i-1]==word2[j-1])
+                {
+                    dp[i][j] = dp[i-1][j-1];
+                }
+                else
+                {
+                    int del = 1+dp[i-1][j];
+                    int insert = 1+dp[i][j-1];
+                    int replace = 1+dp[i-1][j-1];
+
+                    del = min(del, insert);
+                    del = min(del, replace);
+                    dp[i][j] = del;
+                }
+            }
+        }
+        // return Edist(word1, word2, l1-1, l2-1, dp);
+        return dp[l1][l2];
     }
 };
