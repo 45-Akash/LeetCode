@@ -18,11 +18,29 @@ public:
     int lengthOfLIS(vector<int>& nums)
     {
         int n = nums.size();
-        int Max_len = 0;
-        int size = nums.size();
-        vector<vector<int>>dp(n+1, vector<int>(n, -1));
+//         int Max_len = 0;
+//         int size = nums.size();
+//         vector<vector<int>>dp(n+1, vector<int>(n, -1));
         
-        return LongIncSubsequence(-1, 0, n, nums, dp);
+//         return LongIncSubsequence(-1, 0, n, nums, dp);
         
+        
+        //O(n * log n)
+        vector<int>ds;
+        ds.push_back(nums[0]);
+        
+        for(int i=1; i<n; i++)
+        {
+            if(nums[i] > ds[ds.size()-1])
+            {
+                ds.push_back(nums[i]);
+            }
+            else
+            {
+                int ind = lower_bound(ds.begin(), ds.end(), nums[i]) - ds.begin();
+                ds[ind] = nums[i];
+            }
+        }
+    return ds.size();
     }
 };
