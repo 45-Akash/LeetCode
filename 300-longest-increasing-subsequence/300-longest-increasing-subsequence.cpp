@@ -26,21 +26,39 @@ public:
         
         
         //O(n * log n)
-        vector<int>ds;
-        ds.push_back(nums[0]);
+//         vector<int>ds;
+//         ds.push_back(nums[0]);
         
-        for(int i=1; i<n; i++)
+//         for(int i=1; i<n; i++)
+//         {
+//             if(nums[i] > ds[ds.size()-1])
+//             {
+//                 ds.push_back(nums[i]);
+//             }
+//             else
+//             {
+//                 int ind = lower_bound(ds.begin(), ds.end(), nums[i]) - ds.begin();
+//                 ds[ind] = nums[i];
+//             }
+//         }
+        
+        // tabulation
+        vector<int>dp(n, 1);
+        int maxi = 1;
+        for(int i=0; i<n; i++)
         {
-            if(nums[i] > ds[ds.size()-1])
+            for(int prev=0; prev<i; prev++)
             {
-                ds.push_back(nums[i]);
+                if(nums[prev] < nums[i])
+                {
+                    dp[i] = max(dp[i], 1+dp[prev]);
+                }
             }
-            else
-            {
-                int ind = lower_bound(ds.begin(), ds.end(), nums[i]) - ds.begin();
-                ds[ind] = nums[i];
-            }
+            maxi = max(maxi, dp[i]);
         }
-    return ds.size();
+        
+    
+        
+    return maxi;
     }
 };
