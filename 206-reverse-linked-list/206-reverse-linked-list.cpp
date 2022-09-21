@@ -21,8 +21,18 @@ public:
     }
     ListNode* reverseList(ListNode* head)
     {
-        if(head==NULL) return NULL;
-        return reverse(head);
-
+        // if(head==NULL) return NULL;
+        // return reverse(head);
+        ListNode *currentNode=head, *prevNode=NULL, *nextNode=head;
+        
+        while(currentNode != NULL)
+        {
+            nextNode = currentNode->next;
+            currentNode->next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+    head = prevNode;
+    return head;
     }
 };
