@@ -13,7 +13,7 @@ public:
         {
             if(nums[i]>mid)   
             {
-                cout<<left<<" "<<mid<<" "<<nums[i]<<endl;
+                // cout<<left<<" "<<mid<<" "<<nums[i]<<endl;
                 return true;
             }
             else if(nums[i]>left && nums[i]<mid)    mid=nums[i];
