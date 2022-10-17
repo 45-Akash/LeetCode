@@ -3,7 +3,6 @@ public:
     bool checkIfPangram(string sentence)
     {
         set<char>st;
-        
         int size = sentence.length();
         for(int i=0; i<size; i++)
         {
