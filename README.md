@@ -1,7 +1,7 @@
 # LeetCode
 
 * My Solutions for Leetcode problems
-* 550+ Problems solved
+* 650+ Problems solved
 * Data structures and Algorithm
 
 * Badges on Leetcode :- 
