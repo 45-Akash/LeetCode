@@ -13,23 +13,25 @@ public:
        stack<char>st;
        for(int i=0; i<len; i++)
        {
-           if(s[i]=='(' || s[i]=='[' || s[i]=='{'){
-           st.push(s[i]);
+           if(s[i]=='(' || s[i]=='[' || s[i]=='{')
+           {
+                st.push(s[i]);
            }
            
            
             if(s[i]==')' || s[i]==']' || s[i]=='}')
             {
                 if(st.size()==0)
-                    {
-                        return false;
-                    }
+                {
+                    return false;
+                }
                 if(pref(s[i]) == pref(st.top()))
                 {
                     
                     st.pop();
                 }
-                else{
+                else
+                {
                     return false;
                 }
             }
